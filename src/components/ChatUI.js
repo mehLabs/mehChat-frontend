@@ -3,8 +3,9 @@ import './ChatUI.css';
 import { Helmet } from "react-helmet";
 import { Button, Container, Row, Col } from 'react-bootstrap';
 import { useEffect, useState } from 'react';
-import socketio from "socket.io-client";
 import NicknameModal from './NicknameModal'
+
+import io from 'socket.io-client';
 
 
 
@@ -13,8 +14,7 @@ function ChatUI(props) {
 
   
   
-  
-  const [socket] = useState(socketio(props.ip));
+  const [socket,setSocket] = useState(null);
   // eslint-disable-next-line
   const [name,setName] = useState("");
   const [msgs,setMsgs] = useState([]);
@@ -28,14 +28,24 @@ function ChatUI(props) {
   }
 
   useEffect( () => {
-    console.log(props.ip)
-    socket.on("id", id => {
-      setMyId(id);
-    })
-    socket.on("chat", (msg) => {
-      setMsgs(msgs.concat([msg]))
-    })
-  },[props.ip,socket,msgs])
+    if (socket === null){
+
+      setSocket(io(window.location.origin.replace(":3000","") + ":7000"))
+    }
+    if (socket !== null){
+      
+      socket.on('connect', (socket) => {console.log("socket connected " + socket)})
+      socket.on("id", id => {
+        setMyId(id);
+      })
+      socket.on("chat", (msg) => {
+        setMsgs(msgs.concat([msg]))
+      })
+    }
+
+
+
+  },[socket,msgs])
 
   const handleInputChange = (e) => {
     setMsgToSend(e.target.value);

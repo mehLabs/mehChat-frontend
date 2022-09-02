@@ -1,18 +1,19 @@
 import './App.css';
 import ChatUI from './components/ChatUI'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useEffect, useState } from 'react';
+import { useEffect} from 'react';
+import io from 'socket.io-client';
 
 function App() {
 
-  const [ip] = useState("http://181.231.250.83:7000");
+  const socket = io();
 
   useEffect( () => {
   })
 
   return (
     
-    <ChatUI ip={ip}></ChatUI>
+    <ChatUI socket={socket}></ChatUI>
   );
 }
 
