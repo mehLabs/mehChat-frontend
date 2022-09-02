@@ -1,0 +1,28 @@
+.me{
+    margin-left: auto;
+    margin-right: 0;
+}
+.me li{
+    background-color: rgb(84, 149, 223);
+}
+
+.else{
+    margin-left: 0;
+    margin-right: auto;
+}
+
+.title{
+    height: 48px;
+}
+.chat-content{
+    height: calc(100vh - 38px - 48px - 1rem);
+    overflow-y: auto;
+}
+.chat-input{
+    height: 38px;
+}
+
+.body{
+    max-height: 100vh;
+    overflow: hidden;
+}
