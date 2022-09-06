@@ -3,7 +3,7 @@
     margin-right: 0;
 }
 .me li{
-    background-color: rgb(84, 149, 223);
+    background-color: rgb(142, 187, 238);
 }
 
 .else{
@@ -23,6 +23,10 @@
 }
 
 .body{
-    max-height: 100vh;
-    overflow: hidden;
+    height: 100vh;
+}
+
+.users{
+    overflow: auto;
+    height: calc(100vh - 38px - 96px - 1rem);
 }

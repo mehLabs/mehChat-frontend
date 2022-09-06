@@ -3,15 +3,16 @@ import {Modal, ModalHeader, ModalBody, ModalFooter, Button} from 'reactstrap'
 
 const NicknameModal = forwardRef((props,ref) => {
   useImperativeHandle(ref, () => ({
-    firstTimeOpen() {
-      setOpen(true);
-    }
   }))
   //Lógica de abrir y cerrar
   
-  const [open,setOpen] = useState(true);
   const toggleOpen = () => {
-    setOpen(!open);
+    console.log(nickname.length)
+    if(!nickname.length > 0){
+      alert("Ingresá un nombre para empezar a chatear!")
+    }else{
+      props.setOpen(!props.open);
+    }
   }
 
   //
@@ -33,7 +34,7 @@ const NicknameModal = forwardRef((props,ref) => {
 
   return (
     <>
-    <Modal isOpen={open} toggle={toggleOpen}>
+    <Modal isOpen={props.open} toggle={toggleOpen}>
       <ModalHeader toggle={toggleOpen}>Establecer alias</ModalHeader>
       <form onSubmit={sendNickname}>
         <ModalBody>
