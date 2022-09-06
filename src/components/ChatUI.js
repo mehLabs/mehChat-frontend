@@ -31,7 +31,7 @@ function ChatUI(props) {
   useEffect( () => {
     if (socket === null){
 
-      setSocket(io(window.location.origin.replace(":3000","") + ":7000"))
+      setSocket(io("http://52.67.153.226/"))
     }
     if (socket !== null){
       
