@@ -31,7 +31,7 @@ function ChatUI(props) {
   useEffect( () => {
     if (socket === null){
 
-      setSocket(io("localhost:8080"))
+      setSocket(io("15.229.86.15:8080"))
     }
     if (socket !== null){
       
