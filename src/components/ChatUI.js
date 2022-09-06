@@ -31,7 +31,7 @@ function ChatUI(props) {
   useEffect( () => {
     if (socket === null){
 
-      setSocket(io("http://52.67.153.226/"))
+      setSocket(io("https://meh-chat-server.vercel.app/"))
     }
     if (socket !== null){
       
